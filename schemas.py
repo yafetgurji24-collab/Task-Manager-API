@@ -19,6 +19,15 @@ class TaskResponse(BaseModel):
     createdAt:datetime
     updatedAt:datetime
 
+##Model to update email
+class UpdateEmail(BaseModel):
+    email:str
+
+##Model to update password
+class UpdatePassword(BaseModel):
+    password:str
+
+
 ##class to create user object
 class User(BaseModel):
     email:str
