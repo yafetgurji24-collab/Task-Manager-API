@@ -33,9 +33,12 @@ def getTask(id:int):
 
 ##Get all tasks
 @router.get("/Tasks",response_model = List[TaskResponse])
-def getAllTasks():
+def getAllTasks(page: int = 1, limit: int = 10):
     db = sessionMaker()
-    return db.query(TaskDB).all()
+    offset = (page - 1)* limit
+    task = db.query(TaskDB).offset(offset).limit(limit).all()
+    db.close()
+    return task
 
 
 ##Delete route to delete task 
